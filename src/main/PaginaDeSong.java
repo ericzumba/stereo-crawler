@@ -34,8 +34,8 @@ public class PaginaDeSong {
 
 	public String getXml() {
 		pegadorDeXml = new PegadorDeConteudo("http://www.stereomood.com/song/" + getId() + "/shuffle_playlist.xspf?save&index=1");
-		System.out.println(pegadorDeXml.pegaConteudo());
-		return null;
+		String xml = pegadorDeXml.pegaConteudo();
+		return xml;
 	}
 	
 }
