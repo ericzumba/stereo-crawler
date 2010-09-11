@@ -2,8 +2,12 @@ Instructions for wonderful usage
 
 Baixe o projeto.
 Exporte o projeto para um jar executável.
+Muito importante: crie um arquivo setup.properties que tenha apenas o numero
+da proxima música a ser baixada. Este deve ser o único conteúdo do arquivo, que
+deve ficar na mesma pasta onde está o jar.
+Neste ponto, você estará de parabéns.
 Rode o jar numa pasta que, a partir de então, ficará repleta de pastas de 
-bandas e albuns.
+bandas, albuns e fantásticas músicas.
 
 Congratulate yourself.
 
