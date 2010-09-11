@@ -35,7 +35,9 @@ public class Baixador {
 	      throw new IOException("Only read " + offset + " bytes; Expected " + contentLength + " bytes");
 	    }
 	    
-	    FileOutputStream out = new FileOutputStream(saida.toString());
+	    String extensao = url.substring(url.length() - 4, url.length());
+	    
+	    FileOutputStream out = new FileOutputStream(saida.toString() + extensao );
 	    out.write(data);
 	    out.flush();
 	    out.close();

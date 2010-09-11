@@ -1,21 +1,30 @@
 package main;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.Scanner;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
 public class Main {
 
+	static File setup = new File("setup.properties");
 	/**
 	 * @param args
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) {
-		int numeroUrl = 1;
+	public static void main(String[] args) throws IOException {
+
+		Scanner scanner = new Scanner(setup);
+		String line = scanner.nextLine();
+		System.out.println(line);
+		Integer numeroUrl = Integer.parseInt(line);
 		
-		if(args[0] != null) {
-			numeroUrl = Integer.parseInt(args[0]);
-		}
 		
 		
 		while(numeroUrl < 50000) {
@@ -37,8 +46,8 @@ public class Main {
 				System.out.println(track.getLocation());
 				
 				try {
-					track.grava();
-				} catch (IOException e) {
+					track.gravaMusica();
+				} catch (Exception e) {
 					System.out.println("Houve um problema ao gravar a faixa");
 					e.printStackTrace();
 				}
@@ -51,9 +60,15 @@ public class Main {
 
 	}
 
-	private static void escreve(int numeroUrl) {
+	private static void escreve(Integer numeroUrl) throws IOException {
 		
+		setup.delete();
 		
+		FileWriter writer = new FileWriter(setup);
+		writer.write(numeroUrl.toString());
+		writer.flush();	
+		writer.close();
+	
 	}
 
 }

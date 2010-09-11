@@ -17,33 +17,32 @@ public class Track {
 	private String code;
 	private String owner;
 	
-	public boolean grava() throws IOException {
+	public boolean gravaMusica() throws IOException {
 		
+		Baixador baixador = new Baixador();
+
 		File diretorioAutor = new File(this.creator); 
-		
 		if(!diretorioAutor.exists()) {
 			diretorioAutor.mkdir();
 		}
 		
 		File diretorioAlbum = new File(diretorioAutor, this.album);
-		
 		if(!diretorioAlbum.exists()) {
 			diretorioAlbum.mkdir();
 		}
 		
 		File nomeArquivo = new File(diretorioAlbum, this.title);
 		
-		if(!nomeArquivo.exists()) {
-			nomeArquivo.createNewFile();
-		}
-		
-		Baixador baixador = new Baixador();
 		
 		baixador.baixa(this.location, nomeArquivo);
 		
+		File nomeImagem = new File(diretorioAlbum, this.album);
 		
+		
+		baixador.baixa(this.image, nomeImagem);
 		return true;
 	}
+	
 	
 
 	public String getOwner() {
